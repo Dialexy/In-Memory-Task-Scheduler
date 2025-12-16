@@ -39,12 +39,12 @@ This project is designed to demonstrate key principles of task scheduling, inclu
    git clone https://github.com/Dialexy/In-Memory-Task-Scheduler.git
    cd In-Memory-Task-Scheduler
 
-2. **Build the project**
+2. **Build the project**:
    ```bash
    mkdir build && cd build
    cmake ..
    make
 
-3. **Run the validation harness**
+3. **Run the validation harness**:
    ```bash
    ./InMemoryTaskScheduler
