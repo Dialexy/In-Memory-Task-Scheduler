@@ -3,6 +3,13 @@
 
 #include <chrono>
 
+enum class State {
+    Pending = 1,
+    Running = 2,
+    Completed = 3,
+    Expired = 4,
+};
+
 
 class Task {
 
@@ -11,25 +18,18 @@ class Task {
         int priority;
         const std::chrono::time_point<std::chrono::system_clock> expiry;
         std::chrono::milliseconds expectedDuration;
-        std::string state;
+        State state;
     public:
         Task(std::string id, int priority, std::chrono::time_point<std::chrono::system_clock> expiry, std::chrono::milliseconds expectedDuration);
         std::string getId() const;
         int getPriority();
-        auto getState();
+        State getState();
+        auto getSubmitTime();
         void markRunning();
-        void markCompleted() const;
-        void markExpired() const;
-        //TODO: set "getSubmitTime in constructor as const"
+        void markCompleted();
+        void markExpired();
         std::chrono::time_point<std::chrono::system_clock> getExpiry();
 
-};
-
-enum class State {
-    Pending = 1,
-    Running = 2,
-    Completed = 3,
-    Expired = 4,
 };
 
 #endif

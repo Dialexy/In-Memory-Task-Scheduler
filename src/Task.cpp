@@ -1,6 +1,5 @@
 #include "Task.hpp"
 #include <chrono>
-#include <iostream>
 
 
 Task::Task(std::string id, int priority, std::chrono::time_point<std::chrono::system_clock> expiry, std::chrono::milliseconds expectedDuration)
@@ -8,7 +7,7 @@ Task::Task(std::string id, int priority, std::chrono::time_point<std::chrono::sy
     priority(priority),
     expiry(expiry),
     expectedDuration(expectedDuration),
-    state(0)
+    state(State::Pending)
 {}
 
 
@@ -17,24 +16,32 @@ std::string Task::getId() const {
 }
 
 int Task::getPriority() {
+    //TODO: finish taskQueue first
     return 0;
 }
 
-State getState() {
-    State state;
+State Task::getState() {
     return state;
 }
 
+auto Task::getSubmitTime() {
+    //TODO: finish taskQueue first
+}
+
 void Task::markRunning() {
-
+    if (state != State::Running) {
+        state = State::Running;
+    }
 }
 
-void Task::markCompleted() const {
-
+void Task::markCompleted() {
+    if (state != State::Completed) {
+        state = State::Completed;
+    }
 }
 
-void Task::markExpired() const {
-
+void Task::markExpired() {
+    if (state != State::Expired) {
+        state = State::Expired;
+    }
 }
-
-
