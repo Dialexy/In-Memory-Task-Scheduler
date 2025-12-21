@@ -22,7 +22,7 @@ class Task {
     public:
         Task(std::string id, int priority, std::chrono::time_point<std::chrono::system_clock> expiry, std::chrono::milliseconds expectedDuration);
         std::string getId() const;
-        int getPriority();
+        int getPriority() const;
         State getState();
         auto getSubmitTime();
         void markRunning();
