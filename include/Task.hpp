@@ -15,7 +15,8 @@ class Task {
 
     private:
         const std::string id;
-        int priority;
+        const int priority;
+        const std::chrono::time_point<std::chrono::system_clock> submitTime;
         const std::chrono::time_point<std::chrono::system_clock> expiry;
         std::chrono::milliseconds expectedDuration;
         State state;
@@ -24,11 +25,12 @@ class Task {
         std::string getId() const;
         int getPriority() const;
         State getState();
-        auto getSubmitTime();
+        std::chrono::time_point<std::chrono::system_clock> getSubmitTime() const;
         void markRunning();
         void markCompleted();
         void markExpired();
-        std::chrono::time_point<std::chrono::system_clock> getExpiry();
+        std::chrono::time_point<std::chrono::system_clock> getExpiry() const;
+        std::chrono::time_point<std::chrono::system_clock> getExpiryTime() const;
 
 };
 

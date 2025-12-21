@@ -28,6 +28,5 @@ file(GLOB SOURCES "${PROJECT_SOURCE_DIR}/src/*.cpp")
 # Create executable
 add_executable(${PROJECT_NAME} ${SOURCES})
 
-# Optional: Enable testing
-# enable_testing()
-# add_subdirectory(tests)
+enable_testing()
+add_subdirectory(tests)
